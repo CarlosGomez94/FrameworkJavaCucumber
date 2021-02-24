@@ -6,13 +6,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Plus21Elements {
-
-    WebDriver ldriver;
-    public Plus21Elements(WebDriver rdriver) {
-        ldriver = rdriver;
-        PageFactory.initElements(rdriver, this);
-    }
+public class Plus21Elements extends BasePage {
 
     //+21Element's
     @FindBy(xpath = "//button[contains(text(),'Yes')]")
@@ -22,13 +16,16 @@ public class Plus21Elements {
     @CacheLookup
     WebElement btnNo;
 
-    public void clickYes() {
-        btnYes.isDisplayed();
-        btnYes.click();
-    }
-    public void clickNo() {
-        btnNo.isDisplayed();
-        btnNo.click();
+    //Metodo a todas las clases
+    public Plus21Elements(WebDriver rdriver) {
+        super(rdriver);
     }
 
+    public void clickYes() {
+        waitUntilDisplayed(btnYes).click();
+    }
+
+    public void clickNo() {
+        waitUntilDisplayed(btnNo).click();
+    }
 }

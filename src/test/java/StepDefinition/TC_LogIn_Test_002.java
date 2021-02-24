@@ -1,4 +1,4 @@
-package testCases;
+package StepDefinition;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

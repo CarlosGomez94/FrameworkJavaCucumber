@@ -1,6 +1,5 @@
-package testCases;
+package StepDefinition;
 
-import com.aventstack.extentreports.utils.FileUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;

@@ -6,14 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class LogInPage {
-
-    WebDriver ldriver;
-    public LogInPage(WebDriver rdriver) {
-        ldriver = rdriver;
-        PageFactory.initElements(rdriver, this);
-    }
+public class LogInPage extends BasePage {
 
     //LogInElement's
     @FindBy(xpath = "//input[@id='spree_user_email']")
@@ -26,17 +21,22 @@ public class LogInPage {
     @CacheLookup
     WebElement btnLogIn;
 
-    //LogInActions
-    public void setUserName(String userName) {
-        txtUserName.sendKeys(userName);
-    }
-    public void setPassword(String password) {
-        passwordUserName.sendKeys(password);
-    }
-    public void clickBtnLogIn() {
-        //Valida que este el Button y despues le da click
-        btnLogIn.isDisplayed();
-        btnLogIn.click();
+    public LogInPage(WebDriver rdriver) {
+        super(rdriver);
     }
 
+    //LogInActions
+    public void setUserName(String userName) {
+        waitUntilDisplayed(txtUserName).sendKeys(userName);
+
+    }
+
+    public void setPassword(String password) {
+        waitUntilDisplayed(passwordUserName).sendKeys(password);
+    }
+
+    public void clickBtnLogIn() {
+        //Valida que este el Button y despues le da click
+        waitUntilDisplayed(btnLogIn).click();
+    }
 }
