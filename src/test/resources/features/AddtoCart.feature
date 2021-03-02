@@ -1,5 +1,6 @@
-Feature: LogIn Herb Site Browsers
-  @RegressionTest
+Feature: Add to Cart Herb Site Browsers
+
+  @Regression
   Scenario: Validate LogIn Herb
   Given I browser to page using chrome
   And I click Yes im 21 years

@@ -11,9 +11,12 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import pageObjects.LogInPage;
 import pageObjects.Plus21Elements;
@@ -34,7 +37,6 @@ public class LogIn_Test_001 {
     public String password = readconfig.GetApplicationPassword();
 
     public static Logger logger;
-
 
     private WebDriver driver;
 

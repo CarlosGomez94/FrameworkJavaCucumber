@@ -1,4 +1,5 @@
 Feature: LogIn Herb Site Browsers
+
   @RegressionTest
   Scenario: Validate LogIn Herb
   Given I browser to page using chrome
@@ -8,7 +9,7 @@ Feature: LogIn Herb Site Browsers
   And I click LogIn button
   Then The Login it's correct
 
-    @RegressionTest
+  @RegressionTest
   Scenario: Validate LogIn Herb
     Given I browser to page using firefox
     And I click Yes im 21 years
@@ -17,7 +18,7 @@ Feature: LogIn Herb Site Browsers
     And I click LogIn button
     Then The Login it's correct
 
-    @RegressionTest
+  @RegressionTest
   Scenario: Validate LogIn Herb
     Given I browser to page using safari
     And I click Yes im 21 years
