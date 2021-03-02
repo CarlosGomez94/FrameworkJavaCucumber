@@ -1,6 +1,5 @@
 package utilities;
 
-import javax.security.auth.login.Configuration;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;

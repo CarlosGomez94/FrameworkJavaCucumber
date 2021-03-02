@@ -24,7 +24,6 @@ public class Reporting extends TestListenerAdapter {
     public ExtentReports extent;
     public ExtentTest logger;
 
-
     public void onStart(ITestContext testContext)
     {
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());//time stamp
@@ -43,7 +42,7 @@ public class Reporting extends TestListenerAdapter {
         htmlReporter.config().setDocumentTitle("FrameworkProject"); // Title of report
         htmlReporter.config().setReportName("Functional Test Automation Report"); // name of the report
         htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP); //location of the chart
-        htmlReporter.config().setTheme(Theme.STANDARD);
+        htmlReporter.config().setTheme(Theme.DARK);
     }
 
     public void onTestSuccess(ITestResult tr)

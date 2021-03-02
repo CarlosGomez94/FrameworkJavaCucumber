@@ -23,7 +23,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Random;
 
 
 public class LogIn_Test_001 {
@@ -44,11 +43,6 @@ public class LogIn_Test_001 {
 
         logger = Logger.getLogger("Herb");
         PropertyConfigurator.configure("Log4j.properties");
-
-
-
-
-
     }
 
     @After
@@ -58,15 +52,15 @@ public class LogIn_Test_001 {
 
     @Given("I browser to page using {word}")
     public void iBrowsetoPageUsing(String br) {
-        if(br.equals("chrome")) {
+        if (br.equals("chrome")) {
             System.setProperty("webdriver.chrome.driver", readconfig.GetApplicationChromePath());
             driver = new ChromeDriver();
-        }else if (br.equals("firefox")){
+        } else if (br.equals("firefox")) {
             System.setProperty("webdriver.gecko.driver", readconfig.GetApplicationFirefoxPath());
             driver = new FirefoxDriver();
 
             //Es el de Safari pero este no utiliza extencion.
-        }else if (br.equals("safari")){
+        } else if (br.equals("safari")) {
             driver = new SafariDriver();
         }
         driver.get(baseURL);
@@ -102,21 +96,22 @@ public class LogIn_Test_001 {
 
     @Then("The Login it's correct")
     public void theLoginItSCorrect() throws IOException {
-        if (driver.getTitle().equals("HERB Homepage THIS RIGHT HERE")){
+        if (driver.getTitle().equals("HERB Homepage THIS RIGHT HERE")) {
             Assert.assertTrue(true);
             logger.info("LogIn Test Passed");
-        }else{
-            captureScreenshot( driver, "logInTest");
+        } else {
+            captureScreenshot(driver, "logInTest");
             Assert.assertTrue(false);
             logger.info("LogIn Test Failed");
         }
     }
+
     public void captureScreenshot(WebDriver driver, String tname) throws IOException {
         String timeStamp = new SimpleDateFormat(" - HH.mm.ss").format(new Date());
         TakesScreenshot ts = (TakesScreenshot) driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
-        File target = new File( "Screenshots/"+  tname + timeStamp + ".png");
-        FileUtils.copyFile(source,target);
+        File target = new File("Screenshots/" + tname + timeStamp + ".png");
+        FileUtils.copyFile(source, target);
         System.out.println("Screenshot Taken");
     }
 

@@ -11,7 +11,6 @@ public class BasePage {
     protected WebDriver ldriver;
     protected WebDriverWait wait;
 
-
     public BasePage(WebDriver rdriver) {
         ldriver = rdriver;
         wait = new WebDriverWait(ldriver, 15);
