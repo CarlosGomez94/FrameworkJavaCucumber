@@ -9,9 +9,8 @@
     <test name="FrameworkProject">
      <parameter name="browser" value="chrome"/>
         <classes>
-          <class name="StepDefinition.LogIn_Test_001"/>
-          <class name="StepDefinition.TC_LogIn_Test_001"/>
-          <class name="StepDefinition.TC_LogIn_Test_002"/>
+            <class name="StepDefinition.TC_LogIn_Test_001"/>
+            <class name="StepDefinition.TC_LogIn_Test_002"/>
         </classes>
     </test>
 </suite>

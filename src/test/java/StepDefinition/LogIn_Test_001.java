@@ -4,14 +4,15 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import pageObjects.LogInPage;
 import pageObjects.Plus21Elements;
 
 import java.io.IOException;
 
 
+
 public class LogIn_Test_001 extends BaseClass{
+
     @Given("I click Yes im {int} years")
     public void iClickYesImYears(int arg0) {
         Plus21Elements plus21 = new Plus21Elements(driver);
@@ -51,4 +52,6 @@ public class LogIn_Test_001 extends BaseClass{
             logger.info("LogIn Test Failed");
         }
     }
+
+
 }
