@@ -1,7 +1,8 @@
 Feature: LogIn Herb Site.
   @RegressionTest
   Scenario: Validate LogIn Herb
-  Given I click Yes im 21 years
+    Given I browser to page using chrome
+  And I click Yes im 21 years
   Then I entered User ID
   And I entered Password
   And I click LogIn button

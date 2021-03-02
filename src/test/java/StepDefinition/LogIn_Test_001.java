@@ -1,17 +1,76 @@
 package StepDefinition;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import pageObjects.LogInPage;
 import pageObjects.Plus21Elements;
+import utilities.ReadConfig;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+
+
+public class LogIn_Test_001 {
+
+    //From the Read Config i im bringing the Config Data.
+    ReadConfig readconfig = new ReadConfig();
+    public String baseURL = readconfig.GetApplicationURL();
+    public String username = readconfig.GetApplicationUsername();
+    public String password = readconfig.GetApplicationPassword();
+
+    public static Logger logger;
+
+
+    private WebDriver driver;
+
+    @Before
+    public void before() {
+
+        logger = Logger.getLogger("Herb");
+        PropertyConfigurator.configure("Log4j.properties");
 
 
 
-public class LogIn_Test_001 extends BaseClass{
+
+
+    }
+
+    @After
+    public void after() {
+        driver.quit();
+    }
+
+    @Given("I browser to page using {word}")
+    public void iBrowsetoPageUsing(String br) {
+        if(br.equals("chrome")) {
+            System.setProperty("webdriver.chrome.driver", readconfig.GetApplicationChromePath());
+            driver = new ChromeDriver();
+        }else if (br.equals("firefox")){
+            System.setProperty("webdriver.gecko.driver", readconfig.GetApplicationFirefoxPath());
+            driver = new FirefoxDriver();
+
+            //Es el de Safari pero este no utiliza extencion.
+        }else if (br.equals("safari")){
+            driver = new SafariDriver();
+        }
+        driver.get(baseURL);
+    }
 
     @Given("I click Yes im {int} years")
     public void iClickYesImYears(int arg0) {
@@ -52,6 +111,13 @@ public class LogIn_Test_001 extends BaseClass{
             logger.info("LogIn Test Failed");
         }
     }
-
+    public void captureScreenshot(WebDriver driver, String tname) throws IOException {
+        String timeStamp = new SimpleDateFormat(" - HH.mm.ss").format(new Date());
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        File target = new File( "Screenshots/"+  tname + timeStamp + ".png");
+        FileUtils.copyFile(source,target);
+        System.out.println("Screenshot Taken");
+    }
 
 }
