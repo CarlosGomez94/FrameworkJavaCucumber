@@ -11,12 +11,9 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import pageObjects.LogInPage;
 import pageObjects.Plus21Elements;
@@ -90,13 +87,14 @@ public class LogIn_Test_001 {
     }
 
     @And("I click LogIn button")
-    public void iClickLogInButton() {
+    public void iClickLogInButton() throws InterruptedException {
         LogInPage lp = new LogInPage(driver);
         lp.clickBtnLogIn();
     }
 
     @Then("The Login it's correct")
     public void theLoginItSCorrect() throws IOException {
+
         if (driver.getTitle().equals("HERB Homepage THIS RIGHT HERE")) {
             Assert.assertTrue(true);
             logger.info("LogIn Test Passed");

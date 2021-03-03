@@ -18,6 +18,7 @@ public class LogInPage extends BasePage {
     @CacheLookup
     WebElement btnLogIn;
 
+
     public LogInPage(WebDriver rdriver) {
         super(rdriver);
     }
