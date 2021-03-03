@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class LogIn_Test_001 {
 
     //From the Read Config i im bringing the Config Data.
